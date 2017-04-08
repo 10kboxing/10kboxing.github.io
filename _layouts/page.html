@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{% assign img_path = page.image | remove_first: '_media/' %}
+{% if assets[img_path] %}
+{% include modules/banner.html %}
+{% else %}
+{% assign class = 'section-page' %}
+{% endif %}
+<div class="section {{ class }}" id="content">
+  <div class="container">
+    <article class="section-content">{{ content }}</article>
+  </div>
+</div>

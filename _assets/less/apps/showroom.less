@@ -1,0 +1,210 @@
+@thumnail-size: 90px;
+@thumnail-padding: 4px;
+
+.banner {
+  margin-top: -@navbar-height;
+  max-height: 100%;
+  min-height: 350px;
+  @media (max-width: @screen-xs-max) {
+    min-height: 100%;
+  }
+  background-color: @gray-darker;
+  .rel;
+  .img-cover;
+
+  .carousel-inner {
+    position: absolute;
+  }
+
+  .well {
+    background-color: rgba(255,255,255,.65);
+    margin: 0;
+  }
+
+  .carousel-indicators {
+    width: auto;
+    margin: 0 -5px;
+    top: @navbar-height + @line-height-computed;
+    right: ceil((@grid-gutter-width/2));
+    bottom: auto;
+    left: auto;
+    li {
+      border: none;
+      background-color: #fff;
+      text-indent: initial;
+      padding: @thumnail-padding;
+      &, &.active {
+        margin: 0 5px;
+        height: @thumnail-size + @thumnail-padding*2;
+        width: @thumnail-size + @thumnail-padding*2;
+      }
+      &.active {
+        background-color: @brand-primary;
+      }
+      &, img {
+        .img-circle;
+      }
+    }
+  }
+
+  .section {
+    padding-top: @navbar-height + @section-lg-padding;
+    padding-bottom: @section-lg-padding;
+  }
+}
+.banner-heading {
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 10px #000, 1px 1px 0 #000;
+  font-weight: 700;
+}
+.slogan {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+  &>.slogan-container {
+    display: table;
+    height: 100%;
+    &>.slogan-inner {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  h1 {
+    @media (min-width:768px) {
+      font-size: 56px;
+    }
+    margin-bottom: 20px;
+  }
+  a {
+    font-weight: 700;
+  }
+}
+.banner-fluid {
+  max-height: initial;
+}
+.banner-content {
+  height: 100%;
+  @media (min-width: @screen-sm-min) {
+    height: 0;
+    padding-bottom: 60%;
+  }
+  &>div {
+    z-index: 3; // fix for slideshow overlap
+  }
+  //padding-bottom: 56.25%;
+}
+.submenu {
+  position: absolute;
+  padding: 8px 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255,255,255,.9);
+  &.affix {
+    top: @navbar-height;
+    position: fixed;
+    bottom: auto;
+    z-index: @zindex-navbar-fixed - 1;
+    box-shadow: 0 5px 5px -5px #000;
+  }
+  li a {
+    color: @text-color;
+  }
+  .btn {
+    font-weight: 300;
+    text-transform: none;
+  }
+}
+.banner-container {
+  position: absolute;
+  width: 100%;
+  bottom: @navbar-height - 2;
+  @media (min-width: @screen-sm-min) {
+    overflow: hidden;
+  }
+}
+.banner-text {
+  position: relative;
+  background: rgba(255,255,255,0.75);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  display: table;
+  padding: 20px 15px;
+  margin: 0 -15px;
+  &>div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  h1 {
+    font-size: @font-size-h3;
+    .media-heading;
+  }
+  .details {
+    font-size: @font-size-h5;
+  }
+  @media (max-width: @screen-xs-max) {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  @media (min-width: @screen-sm-min) {
+    float: left;
+    padding: 30px 15px 30px 1000px;
+    margin: 0 200px 0 -1000px;
+    &:after {
+      top: 0;
+      bottom: 0;
+      left: 100%;
+      width: 200px;
+      border-top: 200px solid transparent;
+      border-bottom: 200px solid rgba(255,255,255,0.75);
+      border-right: 200px solid transparent;
+      border-left: 200px solid rgba(255,255,255,0.75);
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  }
+  @media (min-width: @screen-md-min) {
+    h1 {
+      font-size: @font-size-h2;
+    }
+    .details {
+      font-size: @font-size-h4;
+    }
+  }
+}
+.list-features {
+  .list-unstyled;
+  padding-left: 1.5em;
+  position: relative;
+  li:before {
+    .fa;
+    content: "\f00c";
+    position: absolute;
+    left: 0;
+    margin-top: 3px;
+  }
+}
+.filter-item {
+  figure {
+    height: 0;
+    padding-bottom: 66.66666666666667%;
+    img {
+      width: 100%;
+    }
+  }
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    &:nth-child(2n+1) {
+      clear: both;
+    }
+  }
+  @media (min-width: @screen-md-min) {
+    &:nth-child(3n+1) {
+      clear: both;
+    }
+  }
+}

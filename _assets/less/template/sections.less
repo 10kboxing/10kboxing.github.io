@@ -1,0 +1,71 @@
+@section-padding: 36px;
+@section-lg-padding: ceil(@section-padding*2);
+@section-spacing: floor(@section-padding/2);
+@section-lg-spacing: floor(@section-lg-padding/2);
+
+.section {
+  .clearfix();
+  padding-top: @section-padding;
+  padding-bottom: @section-padding;
+
+  .section-header {
+    .page-header;
+    margin-top: @section-spacing;
+    margin-bottom: @section-spacing;
+  }
+
+  .section-lead {
+    padding-bottom: @section-padding;
+
+    .section-header + & {
+      padding-top: 0;
+    }
+
+    & > * {
+      .lead();
+    }
+  }
+
+  .section-content {
+    padding-top: @section-spacing;
+    padding-bottom: @section-spacing;
+  }
+
+  &.well {
+    margin-bottom: 0;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+  
+  // remove bottom margin for last element
+  &, & > div {
+    > div,
+    > ul,
+    > ul > li,
+    > p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.section-lg {
+  padding-top: @section-lg-padding;
+  padding-bottom: @section-lg-padding;
+
+  .section-header {
+    margin-top: @section-lg-spacing;
+    margin-bottom: @section-lg-spacing;
+  }
+
+  .section-content {
+    padding-top: @section-lg-spacing;
+    padding-bottom: @section-lg-spacing;
+  }
+
+  .section-lead {
+    padding-bottom: @section-lg-padding;
+  }
+}

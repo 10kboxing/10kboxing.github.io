@@ -1,0 +1,32 @@
+{% assign img_path = page.image | remove_first: '_media/' %}
+{% if assets[img_path] %}
+<style>
+.banner {
+  background-image: url({% include img_path src=img_path width=480 height=800 %});
+}
+@media (min-width: 481px) {
+  .banner {
+    background-image: url({% include img_path src=img_path width=768 height=374 %});
+  }
+}
+@media (min-width: 1024px) {
+  .banner {
+    background-image: url({% include img_path src=img_path width=1366 height=467 %});
+  }
+}
+@media (min-width: 1367px) {
+  .banner {
+    background-image: url({% include img_path src=img_path width=1920 height=420 %});
+  }
+}
+</style>
+{% endif %}
+<div class="banner bg-darken">
+  <div class="slogan">
+    <div class="container slogan-container">
+      <div class="slogan-inner">
+        <h1 class="banner-heading">{{ page.heading | default: page.title | markdownify | strip_html }}</h1>
+      </div>
+    </div>
+  </div>
+</div>

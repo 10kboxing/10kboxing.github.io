@@ -1,0 +1,43 @@
+language: ruby
+rvm:
+- 2.2
+
+cache:
+- directories:
+  - .asset-cache
+  - bower_components
+  - vendor
+
+before_install:
+- 'if [ "$TRAVIS_BUILD_NUMBER" != $(curl -H "Accept: application/vnd.travis-ci.2+json" https://api.travis-ci.org/repos/$TRAVIS_REPO_SLUG/branches/$TRAVIS_BRANCH | jq -r ".branch.number") ]; then echo -e "\e[33;1mThere are newer queued builds for this branch, failing early.\e[0m"; exit 1; fi'
+- nvm install 4
+- npm install -g bower svgo
+- bower install
+- if [ ! -f "$PNGOUT_BIN" ]; then wget -q http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz && tar -xzf pngout-20150319-linux.tar.gz && mv pngout-20150319-linux/x86_64 vendor/pngout; fi
+- if [[ $(git show --name-only) == *_assets/less* ]]; then rm -rf .asset-cache/sprockets; fi
+
+script:
+- set -e
+- bundle exec jekyll build --verbose --trace
+- set +e
+- #bundle exec htmlproofer ./_site --allow-hash-href --check-html --http-status-ignore 0
+- cd _site
+- touch .nojekyll
+- git init
+- git config user.name "Travis-CI"
+- git config user.email "travis@karlsenautodesign.com"
+- git add .
+- git commit -am "Deployed to Github Pages" > /dev/null
+- git push --force --quiet "https://${GH_TOKEN}@github.com/karlsenauto/karlsenauto.github.io" master > /dev/null 2>&1
+
+git:
+  depth: 10
+
+notifications:
+  email: false
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - PNGOUT_BIN=vendor/pngout/pngout
+  - JEKYLL_ENV=production

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="options">
+        </fieldset>
+        <fieldset name="profile">
+            <field name="directory" type="folderlist" label="Gallery Directory" filter="string" class="form-control" directory="images/models" />
+            <field name="image" type="media" label="Header Image" filter="string" class="form-control" />
+            <field name="avatar" type="media" label="Profile Picture" filter="string" class="form-control" />
+            <field name="location" type="text" label="Location" filter="string" class="form-control" />
+            <field name="birthday" date-format="YYYY-MM-DD" type="datetime" label="Birthday" filter="string" class="form-control" />
+            <field name="height" type="text" label="Height" filter="string" class="form-control" />
+            <field name="waist" type="text" label="Waist" filter="string" class="form-control" />
+            <field name="bust" type="text" label="Bust" filter="string" class="form-control" />
+        </fieldset>
+        <fieldset name="photos">
+            <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/models" />
+        </fieldset>
+        <fieldset name="videos">
+            <field name="videos" type="multiform" filter="array" label="Videos">
+                <field name="video" label="URL" type="text" filter="string" class="form-control" />
+            </field>
+        </fieldset>
+    </fields>
+</form>

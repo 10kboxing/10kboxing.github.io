@@ -1,0 +1,308 @@
+---
+layout: default
+---
+<style>
+body { position: relative; }
+{% for photo in page.gallery limit:3 %}
+.banner-{{ forloop.index }} {
+  background-image: url({% include img_path src=photo.src width=480 height=800 %});
+}
+@media (min-width: 481px) {
+  .banner-{{ forloop.index }} {
+    background-image: url({% include img_path src=photo.src width=768 height=461 %});
+  }
+}
+@media (min-width: 769px) {
+  .banner-{{ forloop.index }} {
+    background-image: url({% include img_path src=photo.src width=1366 height=820 %});
+  }
+}
+@media (min-width: 1367px) {
+  .banner-{{ forloop.index }} {
+    background-image: url({% include img_path src=photo.src width=1920 height=1152 %});
+  }
+}
+{% endfor %}
+</style>
+
+<div id="carousel" class="carousel banner slide" data-ride="carousel" pause="false">
+  {% assign gallery_count = page.gallery | size %}
+  {% if gallery_count > 1 %}
+  <div class="container rel hidden-xs">
+    <ol class="carousel-indicators">
+      {% for photo in page.gallery limit:3 %}
+      {% assign img = photo.src | remove_first: '_media/' %}
+      {% if assets[img] %}
+      <li{% if forloop.first == true %} class="active" {% endif %} data-target="#carousel" data-slide-to="{{ forloop.index0 }}">{% img '{{ img }}' magick:resize:90^x90 magick:gravity:center magick:crop:90x90+0+0 image_optim:optimize:1 %}</li>
+      {% endif %}
+      {% endfor %}
+    </ol>
+  </div>
+  {% endif %}
+
+  <div class="carousel-inner fh" role="listbox">
+    {% for photo in page.gallery limit:3 %}
+    {% assign img = photo.src | remove_first: '_media/' %}
+    {% if assets[img] %}
+    <div class="item img-cover img-fixed fh banner-{{ forloop.index }} {% if forloop.first == true %}active{% endif %}"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="banner-content">
+    <div class="submenu">
+      <div class="container">
+        <div class="pull-left">
+          <div id="submenu">
+            <ul class="nav nav-pills" role="tablist">
+              <li><a href="#"><i class="fa fa-chevron-up"></i> </a></li>
+              <li class="hidden-xs"><a href="#content"><i class="fa fa-info-circle"></i> Details</a></li>
+              <li class="hidden-xs"><a href="#photos"><i class="fa fa-camera"></i> Photos</a></li>
+              <li class="hidden-xs"><a href="#videos"><i class="fa fa-video-camera"></i> Videos</a></li>
+              <li class="hidden"><a href="#booking"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pull-right">
+          <a id="carShare" href="#shareModal" data-toggle="modal" class="btn btn-default">
+            <i class="fa fa-fw fa-share-alt"></i> <span class="hidden-xs hidden-sm">Share</span>
+          </a>
+
+          <a href="#booking" class="btn btn-danger">Book {{ page.title }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-container">
+      <div class="container">
+        <div class="banner-text">
+          <div>
+            <h1>{{ page.title | markdownify | strip_html }}</h1>
+            <span class="details">
+              <b class="fa-lg">{{ page.weight }}kg</b> &nbsp;
+              <i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ page.hometown }}</span> &nbsp;
+              <i class="fa fa-fw fa-trophy" title="Stats"></i> <span>{{ page.wins }}-{{ page.losses }}-{{ page.draws }} {% if page.kos > 0 %}({{ page.kos }} KOs){% endif %}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="left carousel-control hidden-xs" href="#carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control hidden-xs" href="#carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+<!--div class="section bg-dark" id="content">
+</div-->
+
+<div class="section" id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <article class="section-content text-justify">{{ content | replace_first: '<p>', '<p class="lead">' }}</article>
+      </div>
+      <div class="col-sm-4 col-sm-push-1">
+        <h3>Overview</h3>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td><strong>Stats</strong></td>
+              <td>{{ page.wins }}-{{ page.losses }}-{{ page.draws }} {% if page.kos > 0 %}({{ page.kos }} KOs){% endif %}</td>
+            </tr>
+            {% if page.weight %}
+            <tr>
+              <td><strong>Weight</strong></td>
+              <td>{{ page.weight }}KG</td>
+            </tr>
+            {% endif %}
+            {% if page.weight_class %}
+            <tr>
+              <td><strong>Weight Class</strong></td>
+              <td>{{ page.weight_class }}</td>
+            </tr>
+            {% endif %}
+            {% if page.hometown %}
+            <tr>
+              <td><strong>Location</strong></td>
+              <td>{{ page.hometown }}</td>
+            </tr>
+            {% endif %}
+            {% if page.birthday %}
+            {% assign agestamp = (page.birthday | date: '%s') %}
+            {% assign age = ((site.time | date: '%s') | minus: agestamp) | divided_by: '31536000' %}
+            <tr>
+              <td><strong>Age</strong></td>
+              <td>{{ age }}</td>
+            </tr>
+            {% endif %}
+            {% if page.gym %}
+            <tr>
+              <td><strong>Gym</strong></td>
+              <td>{{ page.gym }}</td>
+            </tr>
+            {% endif %}
+            {% if page.coach %}
+            <tr>
+              <td><strong>Coach</strong></td>
+              <td>{{ page.coach }}</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section well">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="media">
+          <div class="media-left">
+            <i class="fa fa-fw fa-clock-o fa-3x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading h5">Year</h4>
+            <b class="h4">{{ page.model_year }}</b>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="media">
+          <div class="media-left">
+            <i class="fa fa-fw fa-tachometer fa-3x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading h5">Mileage</h4>
+            <b class="h4">{{ page.mileage | number_format }}</b>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="media">
+          <div class="media-left">
+            <i class="fa fa-fw fa-paint-brush fa-3x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading h5">Colour</h4>
+            <b class="h4">{{ page.colour | capitalize }}</b>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="media">
+          <div class="media-left">
+            <i class="fa fa-fw fa-gbp fa-3x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading h5">Price</h4>
+            <b class="h4">{% if page.price > 0 %}{{ page.price | number_format }}{% else %}On request{% endif %}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if page.gallery %}
+<div class="section bg-dark" id="photos">
+  <div class="container">
+    <h2 class="section-header">Photos</h2>
+    <div class="section-content row gallery">
+      {% assign i = 0 %}
+      {% for photo in page.gallery %}
+      {% assign i = i | plus: 1 %}
+      {% assign img = photo.src | remove_first: '_media/' %}
+      {% if assets[img] %}
+      <div class="col-md-3 col-sm-4 col-xs-6 item">
+        <a style="cursor: pointer;" data-title="{{ photo.title }}" data-image="{% img_path '{{ img }}' magick:resize:1920x1080 watermark:watermark:1 image_optim:optimize:1 %}">
+          <figure>
+            {% img '{{ img }}' magick:resize:300^x225 magick:gravity:center magick:crop:300x225+0+0 watermark:watermark:1 image_optim:optimize:1 class:img-responsive alt:'{{ photo.title | default: page.title }}' %}
+            {% if photo.title %}<figcaption>{{ photo.title }}</figcaption>{% endif %}
+          </figure>
+        </a><br>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div><br>
+  </div>
+</div>
+{% endif %}
+
+<div class="section bg-primary" id="booking">
+  <div class="container">
+    <h2 class="section-header">Book {{ page.title }} for your next event</h2>
+    <div class="section-content">
+      <span class="lead">Complete this form and we'll get back to you as soon as possible.</span>
+    </div>
+    <div class="section-content">
+      <form role="form" action="https://send.abemedia.co.uk/re" method="post" class="donforms">
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="name">Name *</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter your first and last name" required>
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="email">Email *</label>
+            <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="phone">Phone *</label>
+            <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number" required>
+          </div>
+        </div>
+        <div class="text-right">
+          <br>
+          <button type="submit" class="btn btn-danger btn-lg">Enquire now</button>
+        </div>
+        <input type="hidden" name="talent" value="{{ page.title | markdownify | strip_html }}">
+        <input type="hidden" name="url" value="{{ page.url | prepend: site.url }}">
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel">
+  <div class="modal-dialog modal-lightbox" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="galleryModalLabel"></h4>
+      </div>
+      <div class="modal-body carousel">
+        <img />
+        <a class="left carousel-control previous" href="#galleryModal" role="button">
+          <span class="fa fa-chevron-left fa-3x"></span>
+        </a>
+        <a class="right carousel-control next" href="#galleryModal" role="button">
+          <span class="fa fa-chevron-right fa-3x"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="shareModalLabel">Share {{ page.title }}</h4>
+      </div>
+      <div class="modal-body">
+        {% assign providers = site.sharing.provider | join: "," %}
+        {% widget donshare providers=providers bubbles="right" style="long" hide_total=true %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

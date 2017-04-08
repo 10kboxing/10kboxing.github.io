@@ -1,0 +1,13 @@
+{% assign item = include.profile %}
+<a href="{{ item.url }}" class="rel">
+  {% assign img = item.image | remove_first: '_media/' %}
+  {% if assets[img] %}
+  <figure>{% img '{{ img }}' magick:resize:360^x240 magick:gravity:center magick:crop:360x240+0+0 watermark:watermark:1 image_optim:optimize:1 class:img-responsive alt:'{{ item.title }}' %}</figure>
+  {% endif %}
+  <h4 class="title">{{ item.title }}</h4>
+</a>
+<p>
+  <b class="fa-lg">{{ item.weight }}kg</b> &nbsp;
+  <i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ item.hometown }}</span> &nbsp;
+  <i class="fa fa-fw fa-trophy" title="Stats"></i> <span>{{ item.wins }}-{{ item.losses }}-{{ item.draws }} {% if item.kos > 0 %}({{ item.kos }} KOs){% endif %}</span>
+</p>

@@ -1,0 +1,28 @@
+pages:
+    title: Pages
+    icon: sitemap
+events:
+    title: Events
+    icon: calendar-o
+fighters:
+    title: Fighters
+    icon: users
+gallery:
+    title: Gallery
+    icon: camera
+models:
+    title: Models
+    icon: users
+posts:
+  title: Blog
+  icon: copy
+  items:
+    posts:
+      title: Posts
+      icon: file
+    categories:
+      title: Categories
+      icon: folder
+    authors:
+      title: Authors
+      icon: user

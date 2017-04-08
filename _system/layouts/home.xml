@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="general">
+            <field name="heading" label="Heading" type="text" filter="string" class="form-control" />
+        </fieldset>
+    </fields>
+</form>

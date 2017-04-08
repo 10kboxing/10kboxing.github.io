@@ -1,0 +1,94 @@
+---
+layout: default
+---
+{% assign img = page.image | remove_first: '_media/' %}
+{% if assets[img] %}
+<style>
+  .banner {
+    background-image: url({% include img_path src=img width=375 height=667 %});
+  }
+  @media (min-width: 376px) {
+    .banner {
+      background-image: url({% include img_path src=img width=768 height=1024 %});
+    }
+  }
+  @media (min-width: 769px) {
+    .banner {
+      background-image: url({% include img_path src=img width=1366 height=800 %});
+    }
+  }
+  @media (min-width: 1367px) {
+    .banner {
+      background-image: url({% include img_path src=img width=1920 height=1080 %});
+    }
+  }
+</style>
+{% endif %}
+<div class="banner fh">
+  <div class="slogan">
+    <div class="container slogan-container">
+      <div class="slogan-inner">
+        <h1 class="banner-heading">{{ page.heading | default: page.title }}</h1>
+        <a class="btn btn-lg btn-danger" href="/fighters.html">Browse fighters</a>
+        <a class="btn btn-lg btn-danger" href="/models.html">Browse models</a>
+      </div>
+    </div>
+  </div>
+  <a class="arrow-down" href="#content">
+    <span class="fa fa-chevron-down"></span>
+  </a>
+</div>
+
+<div class="section" id="content">
+  <div class="container">
+    <h2 class="h1 section-header text-center">{{ page.title }}</h2>
+    <div class="section-content text-justify-center">{% include template/content.html %}</div>
+  </div>
+</div>
+
+<div class="section section-lg bg-dark cta">
+  <div class="section-content container">
+    <span>Are you a boxer or ring girl? Get more bookings!</span> &nbsp;
+    <a href="/contact.html" class="btn btn-danger btn-lg">Sign Up</a>
+  </div>
+</div>
+
+{% assign fighters = site.fighters | sort: 'order' %}
+<div class="section">
+  <div class="container text-center">
+    <h2 class="section-header text-uppercase">Featured Fighters</h2>
+    {% include profile-slider.html profiles=fighters %}
+    <div class="section-content">
+      <a href="/fighters.html" class="btn btn-danger">See all Fighters</a>
+    </div>
+  </div>
+</div>
+
+{% assign models = site.models | sort: 'order' %}
+<div class="section bg-dark">
+  <div class="container text-center">
+    <h2 class="section-header text-uppercase">Featured Models</h2>
+    {% include profile-slider.html profiles=models %}
+    <div class="section-content">
+      <a href="/models.html" class="btn btn-danger">See all Models</a>
+    </div>
+  </div>
+</div>
+
+<div class="section bg-primary">
+  <div class="container text-center">
+    <h2 class="section-header text-uppercase">Signup to our Newsletter</h2>
+    <div class="section-content">
+      <p class="lead">Get privy information on our upcoming vehicles delivered right to your inbox.</p>
+      <form role="form" action="https://send.abemedia.co.uk/5B" method="post" class="donforms">
+        <label for="email" class="sr-only">Email *</label>
+        <div class="input-group input-group-lg">
+          <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-danger">Get it now!</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+title: '10K Boxing'
+permalink: none
+url: 'https://10kboxing.com'
+timezone: Europe/London
+analytics:
+    provider: google_analytics
+sharing:
+    provider:
+        - facebook
+        - twitter
+        - google
+        - linkedin
+        - pinterest
+        - stumbleupon
+    limit: '3'
+profiles:
+    provider:
+        - facebook
+        - twitter
+        - youtube
+        - instagram
+    facebook: 'https://www.facebook.com/10kBoxing?fref=ts'
+    twitter: 'https://twitter.com/10kboxing'
+    pinterest: 'https://pinterest.com/brightonjapan'
+    youtube: 'https://youtube.com/10kboxing'
+    instagram: 'https://instagram.com/10kboxing'
+defaults:
+    -
+        scope:
+            path: ''
+            type: posts
+        values:
+            layout: page
+    -
+        scope:
+            path: ''
+            type: pages
+        values:
+            layout: page
+    -
+        scope:
+            path: ''
+            type: events
+        values:
+            layout: event
+    -
+        scope:
+            path: ''
+            type: gallery
+        values:
+            layout: gallery
+    -
+        scope:
+            path: ''
+            type: fighters
+        values:
+            layout: fighter
+    -
+        scope:
+            path: ''
+            type: models
+        values:
+            layout: model
+mediaurl: _media
+collections:
+    events:
+        output: true
+        permalink: 'events/:path.html'
+    fighters:
+        output: true
+        permalink: ':path.html'
+    models:
+        output: true
+        permalink: ':path.html'
+    gallery:
+        output: true
+    authors:
+        output: false
+description: '10K Boxing'
+paypal: 10kboxing@gmail.com
+assets:
+    compress:
+        css: false
+        js: true
+    digest: true
+    sources:
+        - bower_components
+        - _assets/less
+        - _assets/images
+        - _assets/js
+        - _media
+exclude:
+- 'Gemfile*'
+- 'bower*'
+- README.md
+- vendor

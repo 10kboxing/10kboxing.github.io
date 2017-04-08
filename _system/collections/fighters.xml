@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="options">
+            <field name="weight" type="number" label="Weight (KG)" filter="int" class="form-control" default="" />
+            <field name="wins" type="number" label="Wins" filter="int" class="form-control" default="0" />
+            <field name="kos" type="number" label="Wins by KO" filter="int" class="form-control" default="0" />
+            <field name="losses" type="number" label="Losses" filter="int" class="form-control" default="0" />
+            <field name="draws" type="number" label="Draws" filter="int" class="form-control" default="0" />
+        </fieldset>
+        <fieldset name="profile">
+            <field name="image" type="media" label="Header Image" filter="string" class="form-control" />
+            <field name="avatar" type="media" label="Profile Picture" filter="string" class="form-control" />
+            <field name="video" type="text" label="YouTube Video" filter="string" class="form-control" />
+            <field name="birthday" type="datetime" format="YYYY-MM-DD" label="Birthday" filter="string" class="form-control" />
+            <field name="weight_class" type="list" label="Weight Class" filter="string" class="form-control">
+                <option value="Heavyweight">Heavyweight</option>
+                <option value="Cruiserweight">Cruiserweight</option>
+                <option value="Light heavyweight">Light heavyweight</option>
+                <option value="Super middleweight">Super middleweight</option>
+                <option value="Middleweight">Middleweight</option>
+                <option value="Super welterweight">Super welterweight</option>
+                <option value="Welterweight">Welterweight</option>
+                <option value="Super lightweight">Super lightweight</option>
+                <option value="Lightweight">Lightweight</option>
+                <option value="Super featherweight">Super featherweight</option>
+                <option value="Featherweight">Featherweight</option>
+            </field>
+            <field name="hometown" type="text" label="Location" filter="string" class="form-control" />
+            <field name="gym" type="text" label="Gym" filter="string" class="form-control" />
+            <field name="coach" type="text" label="Coach" filter="string" class="form-control" />
+        </fieldset>
+        <fieldset name="photos">
+            <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/models" />
+        </fieldset>
+        <fieldset name="videos">
+            <field name="videos" type="multiform" filter="array" label="Videos">
+                <field name="video" label="URL" type="text" filter="string" class="form-control" />
+            </field>
+        </fieldset>
+    </fields>
+</form>

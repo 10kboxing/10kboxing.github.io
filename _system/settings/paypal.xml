@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="site">
+			<field name="paypal" type="email" label="PayPal Email" class="form-control" filter="email" />
+        </fieldset>
+    </fields>
+</form>
