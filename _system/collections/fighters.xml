@@ -2,6 +2,10 @@
 <form>
     <fields>
         <fieldset name="options">
+            <field name="gender" type="list" label="Gender" filter="string" class="form-control">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </field>
             <field name="weight" type="number" label="Weight (KG)" filter="int" class="form-control" default="" />
             <field name="wins" type="number" label="Wins" filter="int" class="form-control" default="0" />
             <field name="kos" type="number" label="Wins by KO" filter="int" class="form-control" default="0" />
