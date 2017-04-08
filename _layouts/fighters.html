@@ -67,7 +67,7 @@ layout: default
     {% assign profiles = (site.fighters | sort: 'order') %}
     <div class="row text-center filter-container" id="showroom">
       {% for item in profiles %}
-      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.cid }}" data-location="{{ item.hometown }}" data-price="{{ item.price }}">
+      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-location="{{ item.hometown }}" data-price="{{ item.price }}">
         {% include profile.html profile=item %}
         &nbsp;
       </div>
