@@ -8,20 +8,36 @@ layout: default
 
     <nav class="navbar navbar-default filter-sort">
       <div class="container-fluid">
-        <form class="navbar-form navbar-left">
-          <label for="filter" class="hidden-sm">Location: </label>
-          <select name="filter" data-filter="location" id="filter" class="sr-only" multiple data-placeholder="Filter by make">
+        <form class="navbar-form navbar-left filter-form">
+          <label for="filter-location" class="hidden-sm">Location: </label>
+          <select data-filter="location" id="filter-location" class="sr-only filter-control" multiple data-placeholder="Filter by location">
             {% assign locations = site.fighters | group_by: 'hometown' | map: "name" | sort %}
             {% for location in locations %}
             <option value="{{ location }}">{{ location }}</option>
             {% endfor %}
           </select>
           &nbsp;
-          <div class="checkbox">
-            <label>
-              <input id="show_sold" name="show_sold" type="checkbox" checked> Include sold vehicles
-            </label>
-          </div>
+          <label for="filter-weight" class="hidden-sm">Weight class: </label>
+          <select data-filter="weight-class" id="filter-weight" class="sr-only filter-control" data-placeholder="Filter by weight class">
+            <option value="Heavyweight">Heavyweight</option>
+            <option value="Cruiserweight">Cruiserweight</option>
+            <option value="Light heavyweight">Light heavyweight</option>
+            <option value="Super middleweight">Super middleweight</option>
+            <option value="Middleweight">Middleweight</option>
+            <option value="Super welterweight">Super welterweight</option>
+            <option value="Welterweight">Welterweight</option>
+            <option value="Super lightweight">Super lightweight</option>
+            <option value="Lightweight">Lightweight</option>
+            <option value="Super featherweight">Super featherweight</option>
+            <option value="Featherweight">Featherweight</option>
+          </select>
+          &nbsp;
+          <label for="filter-gender" class="hidden-sm">Gender: </label>
+          <select data-filter="gender" id="filter-gender" class="sr-only filter-control" data-placeholder="Filter by gender">
+            <option></option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </form>
 
         <!--form class="navbar-form navbar-right hidden-xs">
@@ -41,9 +57,9 @@ layout: default
         <form class="navbar-form navbar-right">
           <label for="sort">Sort: </label>
           <select name="sort" id="sort" data-width="auto" class="form-control">
-            <option value="id">Date added</option>
+            <option value="order">Featured</option>
+            <option value="id">Name</option>
             <option value="price">Price</option>
-            <option value="mileage">Mileage</option>
             <option value=".year">Year</option>
           </select>
 
@@ -67,7 +83,7 @@ layout: default
     {% assign profiles = (site.fighters | sort: 'order') %}
     <div class="row text-center filter-container" id="showroom">
       {% for item in profiles %}
-      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-location="{{ item.hometown }}" data-price="{{ item.price }}">
+      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-gender="{{ item.gender }}" data-location="{{ item.hometown }}" data-order="{{ item.order }}" data-weight-class="{{ item.weight_class }}">
         {% include profile.html profile=item %}
         &nbsp;
       </div>

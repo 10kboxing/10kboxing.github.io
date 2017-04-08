@@ -4,7 +4,7 @@ require 'image_optim'
 Jekyll::Assets::Env.liquid_proxies.add :image_optim, :img, 'optimize' do
   def initialize(asset, _opts, _args)
     @path = asset.filename
-    @image_optim = ::ImageOptim.new
+    @image_optim = ::ImageOptim.new(pngout: false)
   end
 
   def process

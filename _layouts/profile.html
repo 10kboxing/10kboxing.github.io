@@ -157,57 +157,6 @@ body { position: relative; }
   </div>
 </div>
 
-<div class="section well">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="media">
-          <div class="media-left">
-            <i class="fa fa-fw fa-clock-o fa-3x"></i>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading h5">Year</h4>
-            <b class="h4">{{ page.model_year }}</b>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="media">
-          <div class="media-left">
-            <i class="fa fa-fw fa-tachometer fa-3x"></i>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading h5">Mileage</h4>
-            <b class="h4">{{ page.mileage | number_format }}</b>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="media">
-          <div class="media-left">
-            <i class="fa fa-fw fa-paint-brush fa-3x"></i>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading h5">Colour</h4>
-            <b class="h4">{{ page.colour | capitalize }}</b>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="media">
-          <div class="media-left">
-            <i class="fa fa-fw fa-gbp fa-3x"></i>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading h5">Price</h4>
-            <b class="h4">{% if page.price > 0 %}{{ page.price | number_format }}{% else %}On request{% endif %}</b>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 {% if page.photos %}
 <div class="section bg-dark" id="photos">
   <div class="container">
