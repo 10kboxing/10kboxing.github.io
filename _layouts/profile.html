@@ -3,7 +3,7 @@ layout: default
 ---
 <style>
 body { position: relative; }
-{% for photo in page.gallery limit:3 %}
+{% for photo in page.photos limit:3 %}
 .banner-{{ forloop.index }} {
   background-image: url({% include img_path src=photo.src width=480 height=800 %});
 }
@@ -26,11 +26,11 @@ body { position: relative; }
 </style>
 
 <div id="carousel" class="carousel banner slide" data-ride="carousel" pause="false">
-  {% assign gallery_count = page.gallery | size %}
+  {% assign gallery_count = page.photos | size %}
   {% if gallery_count > 1 %}
   <div class="container rel hidden-xs">
     <ol class="carousel-indicators">
-      {% for photo in page.gallery limit:3 %}
+      {% for photo in page.photos limit:3 %}
       {% assign img = photo.src | remove_first: '_media/' %}
       {% if assets[img] %}
       <li{% if forloop.first == true %} class="active" {% endif %} data-target="#carousel" data-slide-to="{{ forloop.index0 }}">{% img '{{ img }}' magick:resize:90^x90 magick:gravity:center magick:crop:90x90+0+0 image_optim:optimize:1 %}</li>
@@ -41,7 +41,7 @@ body { position: relative; }
   {% endif %}
 
   <div class="carousel-inner fh" role="listbox">
-    {% for photo in page.gallery limit:3 %}
+    {% for photo in page.photos limit:3 %}
     {% assign img = photo.src | remove_first: '_media/' %}
     {% if assets[img] %}
     <div class="item img-cover img-fixed fh banner-{{ forloop.index }} {% if forloop.first == true %}active{% endif %}"></div>
@@ -97,9 +97,6 @@ body { position: relative; }
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
-
-<!--div class="section bg-dark" id="content">
-</div-->
 
 <div class="section" id="content">
   <div class="container">
@@ -211,13 +208,13 @@ body { position: relative; }
   </div>
 </div>
 
-{% if page.gallery %}
+{% if page.photos %}
 <div class="section bg-dark" id="photos">
   <div class="container">
     <h2 class="section-header">Photos</h2>
     <div class="section-content row gallery">
       {% assign i = 0 %}
-      {% for photo in page.gallery %}
+      {% for photo in page.photos %}
       {% assign i = i | plus: 1 %}
       {% assign img = photo.src | remove_first: '_media/' %}
       {% if assets[img] %}
