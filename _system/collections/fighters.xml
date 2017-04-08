@@ -31,7 +31,7 @@
             <field name="coach" type="text" label="Coach" filter="string" class="form-control" />
         </fieldset>
         <fieldset name="photos">
-            <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/models" />
+            <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/fighters" />
         </fieldset>
         <fieldset name="videos">
             <field name="videos" type="multiform" filter="array" label="Videos">
