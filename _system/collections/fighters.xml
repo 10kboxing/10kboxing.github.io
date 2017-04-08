@@ -9,8 +9,6 @@
             <field name="draws" type="number" label="Draws" filter="int" class="form-control" default="0" />
         </fieldset>
         <fieldset name="profile">
-            <field name="image" type="media" label="Header Image" filter="string" class="form-control" />
-            <field name="avatar" type="media" label="Profile Picture" filter="string" class="form-control" />
             <field name="video" type="text" label="YouTube Video" filter="string" class="form-control" />
             <field name="birthday" type="datetime" format="YYYY-MM-DD" label="Birthday" filter="string" class="form-control" />
             <field name="weight_class" type="list" label="Weight Class" filter="string" class="form-control">
@@ -32,6 +30,7 @@
         </fieldset>
         <fieldset name="photos">
             <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/fighters" />
+            <field name="image" type="hidden" parse="{{photos[0].src}}" />
         </fieldset>
         <fieldset name="videos">
             <field name="videos" type="multiform" filter="array" label="Videos">
