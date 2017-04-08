@@ -25,10 +25,10 @@ script:
 - touch .nojekyll
 - git init
 - git config user.name "Travis-CI"
-- git config user.email "travis@karlsenautodesign.com"
+- git config user.email "travis@10kboxing.com"
 - git add .
 - git commit -am "Deployed to Github Pages" > /dev/null
-- git push --force --quiet "https://${GH_TOKEN}@github.com/karlsenauto/karlsenauto.github.io" master > /dev/null 2>&1
+- git push --force --quiet "https://${GH_TOKEN}@github.com/10kboxing/10kboxing.github.io" master > /dev/null 2>&1
 
 git:
   depth: 10
