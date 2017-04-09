@@ -75,9 +75,12 @@ var quicksand = (function(data) {
   $('form.filter-form').change(function(e) {
     $filteredData = $data.find($selector);
     $filter.each(function() {
-      var $this = $(this);
-      var filter = $this.val(),
+      var $this = $(this),
+        filter = $this.val(),
         field = $this.data('filter');
+      if(!filter.length) {
+        return false;
+      }
       if (Object.prototype.toString.call(filter) == "[object Array]") {
         for (var i = 0; i < filter.length; i++) {
           filter[i] = $selector + '[data-' + field + '="' + filter[i] + '"]';
