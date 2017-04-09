@@ -7,8 +7,8 @@ layout: default
     {% if content != "" %}{% include template/content.html %}{% endif %}
 
     <nav class="navbar navbar-default filter-sort">
-      <div class="container-fluid">
-        <form class="navbar-form navbar-left filter-form">
+      <form class="container-fluid filter-form">
+        <div class="navbar-form navbar-left">
           <label for="filter-location" class="hidden-sm">Location: </label>
           <select data-filter="location" id="filter-location" class="sr-only filter-control" multiple data-placeholder="Filter by location">
             {% assign locations = site.fighters | group_by: 'hometown' | map: "name" | sort %}
@@ -39,7 +39,7 @@ layout: default
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
-        </form>
+        </div>
 
         <!--form class="navbar-form navbar-right hidden-xs">
           <label for="sort">View: </label>
@@ -55,7 +55,7 @@ layout: default
           </div>
         </form-->
 
-        <form class="navbar-form navbar-right">
+        <div class="navbar-form navbar-right">
           <label for="sort">Sort: </label>
           <select id="sort" data-width="auto" class="form-control">
             <option value="order">Featured</option>
@@ -78,9 +78,9 @@ layout: default
               <span class="sr-only">Ascending</span>
             </label>
           </div>
-        </form>
+        </div>
 
-      </div>
+      </form>
     </nav>
 
     {% assign profiles = (site.fighters | sort: 'order') %}
