@@ -14,12 +14,14 @@ $(".owl-carousel").each(function (index) {
 
 // select2 dropdowns
 $("select").select2({
+    dropdownAutoWidth : true,
+    width: 'auto',
     minimumResultsForSearch: 5
 });
-$("select[multiple]").select2({
-    dropdownAutoWidth : true,
-    width: 'auto'
-});
+// $("select[multiple]").select2({
+//     dropdownAutoWidth : true,
+//     width: 'auto'
+// });
 
 // tooltips
 $('[data-toggle="tooltip"]').tooltip();
