@@ -78,17 +78,18 @@ var quicksand = (function(data) {
       var $this = $(this),
         filter = $this.val(),
         field = $this.data('filter');
-      if (filter && filter.length) {
-        if (Object.prototype.toString.call(filter) == "[object Array]") {
-          for (var i = 0; i < filter.length; i++) {
-            filter[i] = $selector + '[data-' + field + '="' + filter[i] + '"]';
-          }
-          console.log(filter.join(","));
-          $filteredData = $filteredData.filter(filter.join(","));
-        } else {
-          console.log($selector + '[data-' + field + '="' + filter + '"]');
-          $filteredData = $filteredData.filter($selector + '[data-' + field + '="' + filter + '"]');
+      if(!filter || !filter.length) {
+        return;
+      }
+      if (Object.prototype.toString.call(filter) == "[object Array]") {
+        for (var i = 0; i < filter.length; i++) {
+          filter[i] = $selector + '[data-' + field + '="' + filter[i] + '"]';
         }
+        console.log(filter.join(","));
+        $filteredData = $filteredData.filter(filter.join(","));
+      } else {
+        console.log($selector + '[data-' + field + '="' + filter + '"]');
+        $filteredData = $filteredData.filter($selector + '[data-' + field + '="' + filter + '"]');
       }
     });
 
