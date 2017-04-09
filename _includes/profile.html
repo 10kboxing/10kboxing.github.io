@@ -7,7 +7,5 @@
   <h4 class="title">{{ item.title }}</h4>
 </a>
 <p>
-  <b class="fa-lg"><span class="weight">{{ item.weight }}</span>kg</b> &nbsp;
-  <i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ item.hometown }}</span> &nbsp;
-  <i class="fa fa-fw fa-trophy" title="Stats"></i> <span class="wins">{{ item.wins }}</span>-<span class="losses">{{ item.losses }}</span>-<span class="draws">{{ item.draws }}</span> {% if item.kos > 0 %}(<span class="kos">{{ item.kos }}</span> KOs){% endif %}</span>
+  {% include profile_{{ item.collection }}.html %}
 </p>

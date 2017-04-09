@@ -1,0 +1,8 @@
+{% assign item = include.profile | default: page %}
+{% if item.birthday %}
+{% assign agestamp = (item.birthday | date: '%s') %}
+{% assign age = site.time | date: '%s' | minus: agestamp | divided_by: '31536000' %}
+<b class="fa-lg"><span class="age">{{ age }}</span></b> &nbsp;
+{% endif %}
+{% if item.location %}<i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ item.location }}</span> &nbsp;{% endif %}
+{% if item.bust or item.waist or item.hips %}<i class="fa fa-fw fa-bar-chart" title="Bust-waist-hips"></i> <span class="bust">{{ item.bust }}</span>-<span class="waist">{{ item.waist }}</span>-<span class="hips">{{ item.hips }}</span>{% endif %}

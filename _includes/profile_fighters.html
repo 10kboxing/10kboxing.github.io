@@ -1,0 +1,4 @@
+{% assign item = include.profile | default: page %}
+{% if item.weight %}<b class="fa-lg"><span class="weight">{{ item.weight }}</span>kg</b> &nbsp;{% endif %}
+{% if item.hometown %}<i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ item.hometown }}</span> &nbsp;{% endif %}
+<i class="fa fa-fw fa-trophy" title="Stats"></i> <span class="wins">{{ item.wins | default: 0 }}</span>-<span class="losses">{{ item.losses | default: 0 }}</span>-<span class="draws">{{ item.draws | default: 0 }}</span> {% if item.kos > 0 %}(<span class="kos">{{ item.kos }}</span> KOs){% endif %}</span>

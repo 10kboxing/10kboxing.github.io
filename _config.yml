@@ -54,13 +54,13 @@ defaults:
             path: ''
             type: fighters
         values:
-            layout: fighter
+            layout: profile
     -
         scope:
             path: ''
             type: models
         values:
-            layout: model
+            layout: profile
 mediaurl: _media
 collections:
     events:

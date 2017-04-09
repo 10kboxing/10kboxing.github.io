@@ -10,7 +10,6 @@
     <meta name="author" content="{{ site.author }}" />
     <link rel="icon" href="{{ site.url }}/favicon.ico" />
     <link rel="canonical" href="{{ page.url | remove: 'index.html' | prepend: site.url }}"/>
-    <link href='//fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
     <title>{{ page.title | markdownify | strip_html }} | {{ site.title }}</title>
     {% stylesheet app %}
     <!--[if lt IE 9]>
@@ -31,16 +30,6 @@
     <meta name="twitter:creator" content="@abemedia"/>
   </head>
   <body>
-  {% capture logo %}<img src="{% img_path logo.png magick:resize:x50 image_optim:optimize:1 %}" srcset="{% img_path logo.png magick:resize:x50 image_optim:optimize:1 %} 1x, {% img_path logo.png magick:resize:x100 image_optim:optimize:1 %} 2x" alt="{{ site.title }}">{% endcapture %}
-  {% if layout.hide_nav %}
-  <div id="nav" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        {{ logo }}
-      </a>
-    </div>
-  </div>
-  {% else %}
   <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
   <div id="nav" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
@@ -52,7 +41,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{ site.url }}">
-          {{ logo }}
+          <img src="{% img_path logo.png magick:resize:x40 image_optim:optimize:1 %}" srcset="{% img_path logo.png magick:resize:x40 image_optim:optimize:1 %} 1x, {% img_path logo.png magick:resize:x80 image_optim:optimize:1 %} 2x" alt="{{ site.title }}">
         </a>
       </div>
       <div class="collapse navbar-collapse">
@@ -93,7 +82,6 @@
       </div>
     </div>
   </div>
-  {% endif %}
   {{ content }}
   <footer class="footer">
     <div class="container small">

@@ -1,0 +1,46 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td><strong>Stats</strong></td>
+      <td>{{ page.wins }}-{{ page.losses }}-{{ page.draws }} {% if page.kos > 0 %}({{ page.kos }} KOs){% endif %}</td>
+    </tr>
+    {% if page.weight %}
+    <tr>
+      <td><strong>Weight</strong></td>
+      <td>{{ page.weight }}KG</td>
+    </tr>
+    {% endif %}
+    {% if page.weight_class %}
+    <tr>
+      <td><strong>Weight Class</strong></td>
+      <td>{{ page.weight_class }}</td>
+    </tr>
+    {% endif %}
+    {% if page.hometown %}
+    <tr>
+      <td><strong>Location</strong></td>
+      <td>{{ page.hometown }}</td>
+    </tr>
+    {% endif %}
+    {% if page.birthday %}
+    {% assign agestamp = (page.birthday | date: '%s') %}
+    {% assign age = ((site.time | date: '%s') | minus: agestamp) | divided_by: '31536000' %}
+    <tr>
+      <td><strong>Age</strong></td>
+      <td>{{ age }}</td>
+    </tr>
+    {% endif %}
+    {% if page.gym %}
+    <tr>
+      <td><strong>Gym</strong></td>
+      <td>{{ page.gym }}</td>
+    </tr>
+    {% endif %}
+    {% if page.coach %}
+    <tr>
+      <td><strong>Coach</strong></td>
+      <td>{{ page.coach }}</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>

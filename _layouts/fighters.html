@@ -3,10 +3,12 @@ layout: default
 ---
 <div class="section section-page" id="content">
   <div class="container">
-    <h1 class="text-center">{{ page.title | markdownify | strip_html }}</h1>
-    {% if content != "" %}{% include template/content.html %}{% endif %}
+    <h1 class="section-header text-center">{{ page.title | markdownify | strip_html }}</h1>
+    <div class="text-center">
+      {% include template/content.html %}
+    </div>
 
-    <nav class="navbar navbar-default filter-sort">
+    <nav class="navbar navbar-default">
       <form class="container-fluid filter-form">
         <div class="navbar-form navbar-left">
           <label for="filter-location" class="hidden-sm">Location: </label>
@@ -86,7 +88,7 @@ layout: default
     {% assign profiles = (site.fighters | sort: 'order') %}
     <div class="row text-center filter-container" id="showroom">
       {% for item in profiles %}
-      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-gender="{{ item.gender }}" data-location="{{ item.hometown }}" data-order="{{ item.order }}" data-weight-class="{{ item.weight_class }}">
+      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-fights="{{ item.wins | plus: item.draws | plus: item.losses }}" data-gender="{{ item.gender }}" data-location="{{ item.hometown }}" data-order="{{ item.order }}" data-weight-class="{{ item.weight_class }}">
         {% include profile.html profile=item %}
         &nbsp;
       </div>

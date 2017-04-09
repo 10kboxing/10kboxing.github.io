@@ -57,8 +57,8 @@ body { position: relative; }
             <ul class="nav nav-pills" role="tablist">
               <li><a href="#"><i class="fa fa-chevron-up"></i> </a></li>
               <li class="hidden-xs"><a href="#content"><i class="fa fa-info-circle"></i> Details</a></li>
-              <li class="hidden-xs"><a href="#photos"><i class="fa fa-camera"></i> Photos</a></li>
-              <li class="hidden-xs"><a href="#videos"><i class="fa fa-video-camera"></i> Videos</a></li>
+              {% if page.photos %}<li class="hidden-xs"><a href="#photos"><i class="fa fa-camera"></i> Photos</a></li>{% endif %}
+              {% if page.videos %}<li class="hidden-xs"><a href="#videos"><i class="fa fa-video-camera"></i> Videos</a></li>{% endif %}
               <li class="hidden"><a href="#booking"></a></li>
             </ul>
           </div>
@@ -67,7 +67,6 @@ body { position: relative; }
           <a id="carShare" href="#shareModal" data-toggle="modal" class="btn btn-default">
             <i class="fa fa-fw fa-share-alt"></i> <span class="hidden-xs hidden-sm">Share</span>
           </a>
-
           <a href="#booking" class="btn btn-danger">Book {{ page.title }}</a>
         </div>
       </div>
@@ -79,9 +78,7 @@ body { position: relative; }
           <div>
             <h1>{{ page.title | markdownify | strip_html }}</h1>
             <span class="details">
-              <b class="fa-lg">{{ page.weight }}kg</b> &nbsp;
-              <i class="fa fa-fw fa-map-marker" title="Location"></i> <span class="location">{{ page.hometown }}</span> &nbsp;
-              <i class="fa fa-fw fa-trophy" title="Stats"></i> <span>{{ page.wins }}-{{ page.losses }}-{{ page.draws }} {% if page.kos > 0 %}({{ page.kos }} KOs){% endif %}</span>
+              {% include profile_{{ page.collection }}.html %}
             </span>
           </div>
         </div>
@@ -105,53 +102,8 @@ body { position: relative; }
         <article class="section-content text-justify">{{ content | replace_first: '<p>', '<p class="lead">' }}</article>
       </div>
       <div class="col-sm-4 col-sm-push-1">
-        <h3>Overview</h3>
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td><strong>Stats</strong></td>
-              <td>{{ page.wins }}-{{ page.losses }}-{{ page.draws }} {% if page.kos > 0 %}({{ page.kos }} KOs){% endif %}</td>
-            </tr>
-            {% if page.weight %}
-            <tr>
-              <td><strong>Weight</strong></td>
-              <td>{{ page.weight }}KG</td>
-            </tr>
-            {% endif %}
-            {% if page.weight_class %}
-            <tr>
-              <td><strong>Weight Class</strong></td>
-              <td>{{ page.weight_class }}</td>
-            </tr>
-            {% endif %}
-            {% if page.hometown %}
-            <tr>
-              <td><strong>Location</strong></td>
-              <td>{{ page.hometown }}</td>
-            </tr>
-            {% endif %}
-            {% if page.birthday %}
-            {% assign agestamp = (page.birthday | date: '%s') %}
-            {% assign age = ((site.time | date: '%s') | minus: agestamp) | divided_by: '31536000' %}
-            <tr>
-              <td><strong>Age</strong></td>
-              <td>{{ age }}</td>
-            </tr>
-            {% endif %}
-            {% if page.gym %}
-            <tr>
-              <td><strong>Gym</strong></td>
-              <td>{{ page.gym }}</td>
-            </tr>
-            {% endif %}
-            {% if page.coach %}
-            <tr>
-              <td><strong>Coach</strong></td>
-              <td>{{ page.coach }}</td>
-            </tr>
-            {% endif %}
-          </tbody>
-        </table>
+        <h3>Info</h3>
+        {% include profile_{{ page.collection }}_details.html %}
       </div>
     </div>
   </div>
@@ -180,6 +132,66 @@ body { position: relative; }
     </div><br>
   </div>
 </div>
+
+<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel">
+  <div class="modal-dialog modal-lightbox" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="galleryModalLabel"></h4>
+      </div>
+      <div class="modal-body carousel">
+        <img />
+        <a class="left carousel-control previous" href="#galleryModal" role="button">
+          <span class="fa fa-chevron-left fa-3x"></span>
+        </a>
+        <a class="right carousel-control next" href="#galleryModal" role="button">
+          <span class="fa fa-chevron-right fa-3x"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if page.videos %}
+<div class="section bg-darker" id="videos">
+  <div class="container">
+    <h2 class="section-header">Videos</h2>
+    <div class="section-content row videos text-center">
+      {% for v in page.videos %}
+      {% assign video = v.video_url | youtube %}
+      {% if video %}
+      {% assign video_title = v.video_title | default: video.title %}
+      <div class="col-sm-4 col-xs-6 item">
+        <a href="#videoModal" data-title="{{ video_title }}" data-content="{{ video.src }}" data-toggle="modal">
+          <figure>
+            <img src="{{ video.image }}" alt="{{ video_title }}" class="img-responsive">
+          </figure>
+          <h4>{{ video_title }}</h4>
+        </a><br>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div><br>
+  </div>
+</div>
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="videoModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endif %}
 
 <div class="section bg-primary" id="booking">
@@ -204,6 +216,10 @@ body { position: relative; }
             <input type="tel" class="form-control" name="phone" placeholder="Enter your phone number" required>
           </div>
         </div>
+        <div class="form-group">
+          <label for="details">Details</label>
+          <textarea name="details" id="details" rows="4" class="form-control" placeholder="Enter further details about the event"></textarea>
+        </div>
         <div class="text-right">
           <br>
           <button type="submit" class="btn btn-danger btn-lg">Enquire now</button>
@@ -211,26 +227,6 @@ body { position: relative; }
         <input type="hidden" name="talent" value="{{ page.title | markdownify | strip_html }}">
         <input type="hidden" name="url" value="{{ page.url | prepend: site.url }}">
       </form>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel">
-  <div class="modal-dialog modal-lightbox" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="galleryModalLabel"></h4>
-      </div>
-      <div class="modal-body carousel">
-        <img />
-        <a class="left carousel-control previous" href="#galleryModal" role="button">
-          <span class="fa fa-chevron-left fa-3x"></span>
-        </a>
-        <a class="right carousel-control next" href="#galleryModal" role="button">
-          <span class="fa fa-chevron-right fa-3x"></span>
-        </a>
-      </div>
     </div>
   </div>
 </div>

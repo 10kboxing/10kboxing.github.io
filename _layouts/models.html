@@ -3,26 +3,22 @@ layout: default
 ---
 <div class="section section-page" id="content">
   <div class="container">
-    <h1 class="text-center">{{ page.title | markdownify | strip_html }}</h1>
-    {% if content != "" %}{% include template/content.html %}{% endif %}
+    <h1 class="section-header text-center">{{ page.title | markdownify | strip_html }}</h1>
+    <div class="text-center">
+      {% include template/content.html %}
+    </div>
 
-    <nav class="navbar navbar-default filter-sort">
-      <div class="container-fluid">
-        <form class="navbar-form navbar-left">
-          <label for="filter" class="hidden-sm">Location: </label>
-          <select name="filter" data-filter="location" id="filter" class="sr-only" multiple data-placeholder="Filter by make">
+    <nav class="navbar navbar-default">
+      <form class="container-fluid filter-form">
+        <div class="navbar-form navbar-left">
+          <label for="filter-location" class="hidden-sm">Location: </label>
+          <select data-filter="location" id="filter-location" class="sr-only filter-control" multiple data-placeholder="Filter by location">
             {% assign locations = site.models | group_by: 'location' | map: "name" | sort %}
             {% for location in locations %}
             <option value="{{ location }}">{{ location }}</option>
             {% endfor %}
           </select>
-          &nbsp;
-          <div class="checkbox">
-            <label>
-              <input id="show_sold" name="show_sold" type="checkbox" checked> Include sold vehicles
-            </label>
-          </div>
-        </form>
+        </div>
 
         <!--form class="navbar-form navbar-right hidden-xs">
           <label for="sort">View: </label>
@@ -38,13 +34,11 @@ layout: default
           </div>
         </form-->
 
-        <form class="navbar-form navbar-right">
+        <div class="navbar-form navbar-right">
           <label for="sort">Sort: </label>
-          <select name="sort" id="sort" data-width="auto" class="form-control">
-            <option value="id">Date added</option>
-            <option value="price">Price</option>
-            <option value="mileage">Mileage</option>
-            <option value=".year">Year</option>
+          <select id="sort" data-width="auto" class="form-control">
+            <option value="order">Featured</option>
+            <option value=".title">Name</option>
           </select>
 
           <div class="btn-group" data-toggle="buttons" id="order">
@@ -59,15 +53,15 @@ layout: default
               <span class="sr-only">Ascending</span>
             </label>
           </div>
-        </form>
+        </div>
 
-      </div>
+      </form>
     </nav>
 
     {% assign profiles = (site.models | sort: 'order') %}
     <div class="row text-center filter-container" id="showroom">
       {% for item in profiles %}
-      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-location="{{ item.location }}" data-price="{{ item.price }}">
+      <div class="col-md-4 col-sm-6 filter-item" data-id="{{ item.slug }}" data-location="{{ item.location }}" data-order="{{ item.order }}">
         {% include profile.html profile=item %}
         &nbsp;
       </div>

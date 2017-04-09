@@ -1,0 +1,42 @@
+<table class="table table-striped">
+  <tbody>
+    {% if page.location %}
+    <tr>
+      <td><strong>Location</strong></td>
+      <td>{{ page.location }}</td>
+    </tr>
+    {% endif %}
+    {% if page.birthday %}
+    {% assign agestamp = (page.birthday | date: '%s') %}
+    {% assign age = ((site.time | date: '%s') | minus: agestamp) | divided_by: '31536000' %}
+    <tr>
+      <td><strong>Age</strong></td>
+      <td>{% if agestamp %}{{ age }}{% endif %}</td>
+    </tr>
+    {% endif %}
+    {% if page.height %}
+    <tr>
+      <td><strong>Height</strong></td>
+      <td>{{ page.height }}</td>
+    </tr>
+    {% endif %}
+    {% if page.bust %}
+    <tr>
+      <td><strong>Bust</strong></td>
+      <td>{{ page.bust }}</td>
+    </tr>
+    {% endif %}
+    {% if page.waist %}
+    <tr>
+      <td><strong>Waist</strong></td>
+      <td>{{ page.waist }}</td>
+    </tr>
+    {% endif %}
+    {% if page.hips %}
+    <tr>
+      <td><strong>Hips</strong></td>
+      <td>{{ page.hips }}</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>

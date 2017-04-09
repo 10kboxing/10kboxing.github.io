@@ -7,8 +7,9 @@
             <field name="location" type="text" label="Location" filter="string" class="form-control" />
             <field name="birthday" date-format="YYYY-MM-DD" type="datetime" label="Birthday" filter="string" class="form-control" />
             <field name="height" type="text" label="Height" filter="string" class="form-control" />
-            <field name="waist" type="text" label="Waist" filter="string" class="form-control" />
-            <field name="bust" type="text" label="Bust" filter="string" class="form-control" />
+            <field name="bust" type="text" label="Bust" filter="int" class="form-control" />
+            <field name="waist" type="text" label="Waist" filter="int" class="form-control" />
+            <field name="hips" type="text" label="Hips" filter="int" class="form-control" />
         </fieldset>
         <fieldset name="photos">
             <field name="photos" type="gallery" filter="array" label="Photos" idfield="slug" path="_media/models" />
@@ -16,7 +17,8 @@
         </fieldset>
         <fieldset name="videos">
             <field name="videos" type="multiform" filter="array" label="Videos">
-                <field name="video" label="URL" type="text" filter="string" class="form-control" />
+                <field name="video_url" label="URL" type="text" filter="string" class="form-control" />
+                <field name="video_title" label="Title" type="text" filter="string" class="form-control" />
             </field>
         </fieldset>
     </fields>

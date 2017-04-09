@@ -1,14 +1,18 @@
+GIT
+  remote: git://github.com/abeMedia/less.rb.git
+  revision: 334d04e0e4ee2d6558dcae85e8ece63a484db047
+  submodules: true
+  specs:
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.0)
+    addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
-    autoprefixer-rails (6.7.7)
+    autoprefixer-rails (6.7.7.1)
       execjs
-    bitly (1.1.0)
-      httparty (>= 0.7.6)
-      multi_json (~> 1.3)
-      oauth2 (>= 0.5.0, < 2.0)
     colorator (1.1.0)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
@@ -16,28 +20,24 @@ GEM
     exifr (1.2.5)
     extras (0.1.0)
       forwardable-extended (~> 2.5)
-    faraday (0.11.0)
-      multipart-post (>= 1.2, < 3)
     fastimage (2.1.0)
     ffi (1.9.18)
     forwardable-extended (2.6.0)
-    fspath (3.0.3)
-    htmlbeautifier (1.2.1)
+    fspath (3.1.0)
+    htmlbeautifier (1.3.0)
     htmlcompressor (0.3.1)
-    httparty (0.14.0)
-      multi_xml (>= 0.5.2)
     image_optim (0.24.2)
       exifr (~> 1.2, >= 1.2.2)
       fspath (~> 3.0)
       image_size (~> 1.5)
       in_threads (~> 1.3)
       progress (~> 3.0, >= 3.0.1)
-    image_optim_pack (0.3.1.20170311)
+    image_optim_pack (0.3.1.20170318)
       fspath (>= 2.1, < 4)
       image_optim (~> 0.19)
     image_size (1.5.0)
-    in_threads (1.3.1)
-    jekyll (3.4.2)
+    in_threads (1.4.0)
+    jekyll (3.4.3)
       addressable (~> 2.4)
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
@@ -67,26 +67,16 @@ GEM
       listen (~> 3.0, < 3.1)
     jekyll-widgets (0.1.2)
       jekyll (~> 3.3)
-    jwt (1.5.6)
+    jekyll-youtube (1.0.0)
+      jekyll
     kramdown (1.13.2)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
     libv8 (3.16.14.19)
     liquid (3.0.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
-    mini_magick (4.6.1)
-    multi_json (1.12.1)
-    multi_xml (0.6.0)
-    multipart-post (2.0.0)
-    oauth2 (1.3.1)
-      faraday (>= 0.8, < 0.12)
-      jwt (~> 1.0)
-      multi_json (~> 1.3)
-      multi_xml (~> 0.5)
-      rack (>= 1.2, < 3)
+    mini_magick (4.7.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     progress (3.3.1)
@@ -105,7 +95,7 @@ GEM
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
-    uglifier (3.1.7)
+    uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
@@ -113,7 +103,6 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bitly
   image_optim
   image_optim_pack
   jekyll (>= 3.0)
@@ -121,7 +110,8 @@ DEPENDENCIES
   jekyll-sitemap
   jekyll-tidy
   jekyll-widgets
-  less
+  jekyll-youtube
+  less!
   mini_magick
   rack (< 2.0)
   therubyracer
