@@ -13,8 +13,7 @@
             <field name="draws" type="number" label="Draws" filter="int" class="form-control" default="0" />
         </fieldset>
         <fieldset name="profile">
-            <field name="video" type="text" label="YouTube Video" filter="string" class="form-control" />
-            <field name="birthday" type="datetime" format="YYYY-MM-DD" label="Birthday" filter="string" class="form-control" />
+            <field name="birthday" type="calendar" format="YYYY-MM-DD" label="Birthday" filter="string" class="form-control" />
             <field name="weight_class" type="list" label="Weight Class" filter="string" class="form-control">
                 <option value="Heavyweight">Heavyweight</option>
                 <option value="Cruiserweight">Cruiserweight</option>
