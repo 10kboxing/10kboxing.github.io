@@ -85,7 +85,7 @@ var quicksand = (function(data) {
         console.log(filter.join(","));
         $filteredData = $filteredData.filter(filter.join(","));
       } else {
-        console.log(filter.join(","));
+        console.log($selector + '[data-' + field + '="' + filter + '"]');
         $filteredData = $filteredData.filter($selector + '[data-' + field + '="' + filter + '"]');
       }
     });
