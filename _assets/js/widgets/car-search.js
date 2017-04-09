@@ -78,7 +78,7 @@ var quicksand = (function(data) {
       var $this = $(this),
         filter = $this.val(),
         field = $this.data('filter');
-      if(!filter.length) {
+      if(!filter || !filter.length) {
         return false;
       }
       if (Object.prototype.toString.call(filter) == "[object Array]") {
