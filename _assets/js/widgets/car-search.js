@@ -97,6 +97,9 @@ var quicksand = (function(data) {
       reverse: ($(order).val() == 'desc')
     });
 
+    console.log(sortBy);
+    console.log($(order).val());
+
     // finally, call quicksand
     $container.quicksand($filteredData, {
       duration: 1000,
