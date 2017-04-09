@@ -82,9 +82,9 @@ var quicksand = (function(data) {
         for (var i = 0; i < filter.length; i++) {
           filter[i] = $selector + '[data-' + field + '="' + filter[i] + '"]';
         }
-        $filteredData = $filteredData.find(filter.join(","));
+        $filteredData = $filteredData.filter(filter.join(","));
       } else {
-        $filteredData = $filteredData.find($selector + '[data-' + field + '="' + filter + '"]');
+        $filteredData = $filteredData.filter($selector + '[data-' + field + '="' + filter + '"]');
       }
     });
 
