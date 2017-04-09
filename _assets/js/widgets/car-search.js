@@ -78,7 +78,7 @@ var quicksand = (function(data) {
       var $this = $(this);
       var filter = $this.val(),
         field = $this.data('filter');
-      if (typeof(filter) == 'array') {
+      if (Object.prototype.toString.call(filter) == "[object Array]") {
         for (var i = 0; i < filter.length; i++) {
           filter[i] = $selector + '[data-' + field + '="' + filter[i] + '"]';
         }
