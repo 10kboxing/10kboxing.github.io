@@ -11,7 +11,7 @@ cache:
 before_script:
 - #'if [ "$TRAVIS_BUILD_NUMBER" != $(curl -H "Accept: application/vnd.travis-ci.2+json" https://api.travis-ci.org/repos/$TRAVIS_REPO_SLUG/branches/$TRAVIS_BRANCH | jq -r ".branch.number") ]; then echo -e "\e[33;1mThere are newer queued builds for this branch, failing early.\e[0m"; exit 1; fi'
 - nvm install 4
-- npm install -g bower svgo request # request required for importing remote less (used for google fonts)
+- npm install -g bower svgo
 - bower install
 - #if [ ! -f "$PNGOUT_BIN" ]; then curl -s http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux-static.tar.gz | tar -xz -C $(dirname $PNGOUT_BIN) --strip-components 2 pngout-20150319-linux-static/x86_64; fi
 - if [[ $(git show --name-only) == *_assets/less* ]]; then rm -rf .asset-cache/sprockets; fi
