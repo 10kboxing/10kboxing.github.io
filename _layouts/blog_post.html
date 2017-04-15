@@ -2,7 +2,7 @@
 layout: default
 class: section container container-sm
 ---
-{% assign author = site.authors | where: 'slug', post.author | first %}
+{% assign author = site.authors | where: 'slug', page.author | first %}
 <div class="section container container-sm" id="content">
   <article>
     <header class="article-header">
