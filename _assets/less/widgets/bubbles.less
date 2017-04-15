@@ -1,0 +1,133 @@
+@bubble-bg:             @panel-bg;
+@bubble-border:         @panel-default-border;
+@bubble-padding:        @panel-body-padding;
+@bubble-caret:          @line-height-computed;
+
+.bubble {
+  padding: @bubble-padding;
+  position: relative;
+  border: 1px solid @bubble-border;
+  background-color: @bubble-bg;
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+  &:before,
+  &:after {
+    border: @bubble-caret solid transparent;
+    content: '';
+    position: absolute;
+  }
+}
+
+/* Bubble Top */
+.bubble-top,
+.bubble-top-left,
+.bubble-top-center,
+.bubble-top-right {
+  margin-bottom: @line-height-computed + @bubble-caret;
+  &:before,
+  &:after {
+    top: 100%;
+  }
+  &:before {
+    border-top: @bubble-caret solid @bubble-border;
+  }
+  &:after {
+    border-top: @bubble-caret solid @bubble-bg;
+    margin-top: -1px;
+  }
+}
+
+/* Bubble Bottom */
+.bubble-bottom,
+.bubble-bottom-left,
+.bubble-bottom-center,
+.bubble-bottom-right {
+  margin-top: @line-height-computed + @bubble-caret;
+  &:before,
+  &:after {
+    bottom: 100%;
+  }
+  &:before {
+    border-bottom: @bubble-caret solid @bubble-border;
+  }
+  &:after {
+    border-bottom: @bubble-caret solid @bubble-bg;
+    margin-bottom: -1px;
+  }
+}
+
+/* Bubble Left */
+.bubble-left,
+.bubble-left-center {
+  margin-right: @bubble-caret;
+  &:before,
+  &:after {
+    left: 100%;
+  }
+  &:before {
+    border-left: @bubble-caret solid @bubble-border;
+  }
+  &:after {
+    border-left: @bubble-caret solid @bubble-bg;
+    margin-left: -1px;
+  }
+}
+
+/* Bubble Right */
+.bubble-right,
+.bubble-right-center {
+  margin-left: @bubble-caret;
+  &:before,
+  &:after {
+    right: 100%;
+  }
+  &:before {
+    border-right: @bubble-caret solid @bubble-border;
+  }
+  &:after {
+    border-right: @bubble-caret solid @bubble-bg;
+    margin-right: -1px;
+  }
+}
+
+
+/* Bubble alignment */
+.bubble-top,
+.bubble-top-left,
+.bubble-bottom,
+.bubble-bottom-left {
+  &:before,
+  &:after {
+    left: @bubble-padding;
+  }
+}
+.bubble-top-center,
+.bubble-bottom-center {
+  &:before,
+  &:after {
+    left: 50%;
+    margin-left: -@bubble-caret;
+  }
+}
+.bubble-top-right,
+.bubble-bottom-right {
+  &:before,
+  &:after {
+    right: @bubble-padding;
+  }
+}
+
+.bubble-left,
+.bubble-right {
+  &:before,
+  &:after {
+    top: @bubble-padding;
+  }
+}
+.bubble-left-center,
+.bubble-right-center {
+  &:before,
+  &:after {
+    top: 50%;
+    margin-top: -@bubble-caret;
+  }
+}
