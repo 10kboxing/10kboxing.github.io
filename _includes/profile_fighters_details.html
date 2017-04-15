@@ -23,11 +23,9 @@
     </tr>
     {% endif %}
     {% if page.birthday %}
-    {% assign agestamp = (page.birthday | date: '%s') %}
-    {% assign age = ((site.time | date: '%s') | minus: agestamp) | divided_by: '31536000' %}
     <tr>
       <td><strong>Age</strong></td>
-      <td>{{ age }}</td>
+      <td>{{ page.birthday | years }}</td>
     </tr>
     {% endif %}
     {% if page.gym %}
