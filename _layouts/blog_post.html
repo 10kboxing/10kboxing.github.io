@@ -2,7 +2,7 @@
 layout: default
 class: section container container-sm
 ---
-{% for a in site.authors %}{% if a.title == page.author %}{% assign author = a %}{% endif %}{% endfor %}
+{% assign author = site.authors | where: 'slug', post.author | first %}
 <div class="section container container-sm" id="content">
   <article>
     <header class="article-header">
