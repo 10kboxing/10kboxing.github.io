@@ -72,8 +72,8 @@ collections:
     models:
         output: true
         permalink: ':path.html'
-    gallery:
-        output: true
+    testimonials:
+        output: false
     authors:
         output: false
 description: '10K Boxing'
