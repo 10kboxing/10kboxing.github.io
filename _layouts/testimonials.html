@@ -1,0 +1,36 @@
+---
+layout: default
+class: bg-gray section
+---
+<div class="container">
+  <h1 class="page-header">{{ page.title }}</h1>
+  {{ content | replace_first: '<p>','<p class="lead">' }}
+  {% assign items = site.testimonials | sort: 'order' %}
+  {% for item in items %}
+  {% assign len = item.content | strip_html | number_of_words %}
+  <br>
+  <div id="{{ item.slug}}">
+    <div class="bubble bubble-top{% cycle '-right', '' %} {% if len <= 25 %}lead{% endif %}">
+      {{ item.content }}
+    </div>
+    {% assign img = item.image | remove_first: '_media/' %}
+    {% capture img %}{% if assets[img] %}{% img '{{ img }}' magick:resize:90^x90 magick:gravity:center magick:crop:90x90+0+0 image_optim:optimize:1 class:"img-circle" alt:"{{ item.item }}" %}{% endif %}{% endcapture %}
+    {% capture body %}
+    <h4>{{ item.title }}</h4>
+    {% if item.position %}{{ item.position }}<br>{% endif %}
+    {% if item.company %}{{ item.company }}{% endif %}
+    {% endcapture %}
+    {# % capture media %}template/media-{% cycle 'right', 'left' %}.html{% endcapture %}
+    {% include {{media}} media=img body=body % #}
+    <div class="media">
+      <div class="media-left">
+        {{ img }}
+      </div>
+      <div class="media-body">
+        {{ body }}
+      </div>
+    </div>
+  </div>
+  <br>
+  {% endfor %}
+</div>
