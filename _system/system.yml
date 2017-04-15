@@ -6,13 +6,10 @@ events:
     icon: calendar-o
 fighters:
     title: Fighters
-    icon: users
-gallery:
-    title: Gallery
-    icon: camera
+    icon: user
 models:
     title: Models
-    icon: users
+    icon: heart
 testimonials:
     title: Testimonials
     icon: users
