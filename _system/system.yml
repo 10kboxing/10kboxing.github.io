@@ -13,6 +13,9 @@ gallery:
 models:
     title: Models
     icon: users
+testimonials:
+    title: Testimonials
+    icon: users
 posts:
   title: Blog
   icon: copy
