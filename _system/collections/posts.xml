@@ -2,7 +2,7 @@
 <form>
     <fields>
         <fieldset name="options">
-          <field name="author" type="collection" label="Author" filter="string" class="form-control" app="authors" />
+          <field name="author" type="itemlist" label="Author" filter="string" class="form-control" app="authors" />
         </fieldset>
     </fields>
 </form>
