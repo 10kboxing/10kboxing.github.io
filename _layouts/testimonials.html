@@ -10,7 +10,7 @@ class: bg-gray section
   {% assign len = item.content | strip_html | number_of_words %}
   <br>
   <div id="{{ item.slug}}">
-    <div class="bubble bubble-top{% cycle '-right', '' %} {% if len <= 25 %}lead{% endif %}">
+    <div class="bubble bubble-top {% if len <= 25 %}lead{% endif %}">
       {{ item.content }}
     </div>
     <div class="media">
