@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
     <fields>
-        <fieldset name="general">
-            <field name="quote" type="textarea" label="Zitat" filter="string" class="form-control" rows="10" />
-        </fieldset>
         <fieldset name="options">
             <field name="position" type="text" label="Position" filter="string" class="form-control" admintable="true" />
-            <field name="location" type="text" label="Lokation" filter="string" class="form-control" admintable="true" />
-            <field name="birthday" type="datetime" date-format="YYYY-MM-DD" label="Geburtstag" filter="string" class="form-control" admintable="true" />
-            <field name="image" type="media" label="Foto" filter="string" class="form-control" directory="_media/testimonials" />
+            <field name="location" type="text" label="Location" filter="string" class="form-control" admintable="true" />
+            <field name="image" type="media" label="Image" filter="string" class="form-control" directory="_media/testimonials" />
         </fieldset>
     </fields>
 </form>
