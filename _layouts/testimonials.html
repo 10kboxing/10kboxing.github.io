@@ -20,8 +20,8 @@ class: bg-gray section
     {% if item.position %}{{ item.position }}<br>{% endif %}
     {% if item.company %}{{ item.company }}{% endif %}
     {% endcapture %}
-    {# % capture media %}template/media-{% cycle 'right', 'left' %}.html{% endcapture %}
-    {% include {{media}} media=img body=body % #}
+    {# % capture media %}template/media-{% cycle 'right', 'left' %}.html{# % endcapture % #}
+    {# % include {{media}} media=img body=body % #}
     <div class="media">
       <div class="media-left">
         {{ img }}
