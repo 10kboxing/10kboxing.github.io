@@ -16,11 +16,11 @@ class: section container container-sm
       <div class="article-info">
         <!--a href="{{ site.baseurl }}{{ author.url }}" rel="author" class="avatar"-->
         <div class="avatar">
-          {% capture src %}people/{{ author.slug }}.jpg{% endcapture%}
+          {% assign src = author.image | remove_first: '_media/' %}
           {% if assets[src] %}
-          {% img '{{src}}' magick:resize:120^x120 magick:gravity:center magick:crop:120x120+0+0 image_optim:optimize:1 class:img-thumbnail alt:'{{ page.author }}' %}
+          {% img '{{src}}' magick:resize:120^x120 magick:gravity:center magick:crop:120x120+0+0 image_optim:optimize:1 class:img-thumbnail alt:'{{ author.title }}' %}
           {% endif %}
-          <span class="h5">By {{ page.author }}</span>
+          <span class="h5">By {{ author.title }}</span>
         </div>
         <!--/a-->
   	<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_string }}</time>
