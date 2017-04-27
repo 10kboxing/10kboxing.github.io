@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields>
+        <fieldset name="options">
+          <field name="author" type="itemlist" label="Author" filter="string" class="form-control" app="authors" />
+        </fieldset>
+    </fields>
+</form>

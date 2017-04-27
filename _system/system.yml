@@ -7,12 +7,12 @@ events:
 fighters:
     title: Fighters
     icon: users
-gallery:
-    title: Gallery
-    icon: camera
 models:
     title: Models
-    icon: users
+    icon: heart
+testimonials:
+    title: Testimonials
+    icon: commenting
 posts:
   title: Blog
   icon: copy
