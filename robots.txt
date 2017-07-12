@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://10kboxing.com/sitemap.xml
